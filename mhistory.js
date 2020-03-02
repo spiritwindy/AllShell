@@ -1,6 +1,7 @@
 var os=require("os");
 var fs=require("fs");
-var logPath="C:/Users/hwx/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadline/ConsoleHost_history.txt";
+var path = require("path")
+var logPath = path.join(os.homedir(), "/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt");
 var commons= fs.readFileSync(logPath).toString().split("\n");
 commons=Array.from(new Set(commons));
 var live=new Array(commons.length).fill(1);//1
