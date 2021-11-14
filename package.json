@@ -1,0 +1,23 @@
+{
+  "name": "allshell",
+  "version": "1.0.3",
+  "description": "",
+  "main": "link.js",
+  "bin": {
+    "mlink":"mlink",
+    "mhistory":"mhistory"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spitWind/AllShell.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spitWind/AllShell/issues"
+  },
+  "homepage": "https://github.com/spitWind/AllShell#readme"
+}
