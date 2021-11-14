@@ -1,7 +1,6 @@
 var readline = require("readline")
-var util = require("util")
 var path = require("path")
-const { existsSync, symlinkSync, lstatSync } = require("fs")
+const { existsSync, symlinkSync, lstatSync, fstatSync } = require("fs")
 var baseDir = process.cwd()
 
 async function run() {
@@ -16,7 +15,11 @@ async function run() {
             var sourcePath
             var linkPath
             while (true) {
-                sourcePath = await question("source File:")
+                sourcePath = await question("源 文件:")
+                if (sourcePath === "") {
+                    console.log("输入:. 表示当前目录")
+                    continue
+                }
                 if (!path.isAbsolute(sourcePath)) {
                     sourcePath = path.join(baseDir, sourcePath)
                 }
@@ -28,7 +31,10 @@ async function run() {
                 }
             }
             while (true) {
-                linkPath = await question("link File Path|Dir:")
+                linkPath = await question("链接地址 Path|Dir:")
+                if (linkPath === "") {
+                    continue
+                }
                 if (!path.isAbsolute(linkPath)) {
                     linkPath = path.join(baseDir, linkPath)
                 }
@@ -39,12 +45,11 @@ async function run() {
                     continue
                 }
                 // var stat = lstatSync(linkPath)
-                if (dir == linkPath) {
-                    console.log("目标是文件自动夹")
+                // console.log([dir, linkPath])
+                if (existsSync(linkPath) && lstatSync(linkPath).isDirectory()) {
                     linkPath = path.join(linkPath, path.basename(sourcePath))
-                    console.log("目标是文件自动夹," + linkPath)
+                    console.log("目标是:" + linkPath)
                 }
-
                 if (existsSync(linkPath)) {
                     console.log("目标文件已存在")
                     continue
@@ -56,6 +61,7 @@ async function run() {
         }
     } catch (err) {
         console.error(err)
+        process.exit(1)
     }
 }
 
