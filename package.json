@@ -1,6 +1,6 @@
 {
-  "name": "allshell",
-  "version": "1.0.3",
+  "name": "mshell",
+  "version": "1.0.0",
   "description": "",
   "main": "link.js",
   "bin": {
