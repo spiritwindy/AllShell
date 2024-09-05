@@ -20,10 +20,11 @@ async function findLargeFiles(directory) {
     
     for (const file of entries) {
         try {
-            console.log(file)
             const stats = await fs.stat(file);
             if (stats.size > maxSize) {
-                console.log(file)
+                // console.log(file)
+                const relativePath = path.relative(directory, file).replace(/\\/g, '/');
+                console.log(relativePath)
                 // console.log(`File: ${file}, Size: ${(stats.size / (1024 * 1024)).toFixed(2)} MB`);
             }
         } catch (error) {
