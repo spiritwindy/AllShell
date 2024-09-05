@@ -4,8 +4,9 @@
   "description": "",
   "main": "link.js",
   "bin": {
-    "mlink":"mlink",
-    "mhistory":"mhistory"
+    "mlink": "mlink",
+    "mhistory": "mhistory",
+    "mlarge": "mlarge.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/spitWind/AllShell/issues"
   },
-  "homepage": "https://github.com/spitWind/AllShell#readme"
+  "homepage": "https://github.com/spitWind/AllShell#readme",
+  "dependencies": {
+    "fast-glob": "^3.3.2"
+  }
 }
